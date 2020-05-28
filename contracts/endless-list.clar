@@ -2,7 +2,7 @@
 (define-map items-map 
     ((page int))
     (
-        (items (list 10 int))   ;; the list of items
+        (items (list 10 principal))   ;; the list of items
         (next int)              ;; the index of the next list for list traversal in case it isn't just +1
     )
 )
@@ -11,7 +11,7 @@
 (define-data-var current-list-page int -1)  ;; set to -1 at start so first move-to-next sets it to 0
 
 ;; The prinicpal that is allowed to add items to the list
-(define-data-var allowed-user principal 'SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB)
+(define-data-var allowed-user principal 'SP2AYGM74FNMJT9M197EJSB49P88NRH0ES1KZD1BX)
 
 ;; Report the current page so consumers can plan for how long a list to expect
 (define-read-only (get-current-page)
@@ -30,7 +30,7 @@
 
 ;; Add a new item to the list by calling this function
 ;; Only the principal in allowed-user can change the list
-(define-public (add-item (item int))
+(define-public (add-item (item principal))
     (if
         (is-allowed)
         (if
@@ -57,7 +57,7 @@
 )
 
 ;; Add the item to the current list
-(define-private (add-to-current-list (item int))
+(define-private (add-to-current-list (item principal))
     (map-set items-map
         ((page (var-get current-list-page)))
         (
@@ -73,13 +73,13 @@
 )
 
 ;; return the current list with the item appended to maintain the max-length value
-(define-private (current-list-plus (item int))
+(define-private (current-list-plus (item principal))
     (unwrap-panic (as-max-len? (add-to-current-items item) u10))
 )
 
 ;; add the item to the current items list
 ;; concat will increase the max-length of the list
-(define-private (add-to-current-items (item int))
+(define-private (add-to-current-items (item principal))
     (concat (get items (unwrap-panic (get-items-map (var-get current-list-page)))) (list item))
 )
 
@@ -102,7 +102,7 @@
 )
 
 ;; advance the current list page and add a new map there, starting with given item
-(define-private (move-to-next-list-and-add (item int))
+(define-private (move-to-next-list-and-add (item principal))
     (begin
         (var-set current-list-page (+ (var-get current-list-page) 1))
         (map-set items-map 

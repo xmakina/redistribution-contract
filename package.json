@@ -1,11 +1,11 @@
 {
-  "name": "endless-list",
+  "name": "redistribution",
   "version": "0.0.0",
   "author": {
     "name": "Alex Addams",
-    "email": "alex.addams@67bricks.com"
+    "email": "github@xmakina.co.uk"
   },
-  "repository": "https://github.com/xmakina/endless-list.git",
+  "repository": "https://github.com/xmakina/redistribution-contract.git",
   "private": true,
   "engines": {
     "node": ">=10"
@@ -15,16 +15,17 @@
     "test:watch": "mocha --watch"
   },
   "devDependencies": {
-    "@types/node": "^10",
-    "typescript": "^3.5.2",
-    "ts-node": "^8.2.0",
-    "chai": "^4.2.0",
     "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10",
+    "chai": "^4.2.0",
     "mocha": "^6.1.4",
-    "@types/mocha": "^5.2.7"
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.2"
   },
   "dependencies": {
     "@blockstack/clarity": "^0.1.16",
-    "@blockstack/clarity-native-bin": "^0.1.16"
+    "@blockstack/clarity-native-bin": "^0.1.16",
+    "@blockstack/stacks-transactions": "^0.4.4"
   }
 }
