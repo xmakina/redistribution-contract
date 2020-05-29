@@ -9,8 +9,8 @@ This is also an example of cross contract communication with the endless-list co
 Because the @blockstack/clarity framework cannot support STX transactions, the full test suite has not been possible. Hopefully part 2 of the hackathon can help us address this!
 
 # Demonstration
-Deploy the contract
-Add several beneficiaries
-Donate some stacks
-Ping the endless contract for the number of pages
-Submit the pages 10 at a time for redistribution
+* Deploy the contract
+* Add several beneficiaries
+* Donate some stacks
+* Ping the endless contract for the number of pages
+* Submit the pages 10 at a time for redistribution
